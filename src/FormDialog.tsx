@@ -1,55 +1,49 @@
-import React from "react";
 import {
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Button,
-  DialogProps,
+	Button,
+	Dialog,
+	DialogActions,
+	DialogContent,
+	DialogTitle,
+	type DialogProps,
 } from "@mui/material";
-import { UseFormReturn } from "react-hook-form";
 
 interface FormDialogProps extends DialogProps {
-  onClose: () => void;
-  methods: UseFormReturn;
-  onSubmit: React.FormEventHandler<HTMLFormElement>;
-  error: boolean;
+	onClose: () => void;
+	onSubmit: () => void;
+	disabled: boolean;
 }
 
 export default function FormDialog({
-  children,
-  onClose,
-  methods,
-  onSubmit,
-  error,
-  ...rest
+	children,
+	onClose,
+	onSubmit,
+	disabled,
+	...rest
 }: FormDialogProps) {
-  const handleCancel = () => {
-    methods.reset();
-    onClose();
-  };
+	const handleCancel = () => {
+		onClose();
+	};
 
-  return (
-    <Dialog {...rest} onClose={onClose}>
-      <DialogTitle>Form Dialog</DialogTitle>
-      <DialogContent>
-        <form onSubmit={onSubmit}>
-          {children}
-          <DialogActions>
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              disabled={methods.formState.isSubmitting || error}
-            >
-              Submit
-            </Button>
-            <Button onClick={handleCancel} color="primary">
-              Cancel
-            </Button>
-          </DialogActions>
-        </form>
-      </DialogContent>
-    </Dialog>
-  );
+	return (
+		<Dialog {...rest} onClose={onClose}>
+			<DialogTitle>Form Dialog</DialogTitle>
+			<DialogContent>
+				{children}
+				<DialogActions>
+					<Button
+						type="submit"
+						variant="contained"
+						color="primary"
+						disabled={disabled}
+						onClick={onSubmit}
+					>
+						Submit
+					</Button>
+					<Button onClick={handleCancel} color="primary">
+						Cancel
+					</Button>
+				</DialogActions>
+			</DialogContent>
+		</Dialog>
+	);
 }

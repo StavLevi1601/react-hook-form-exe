@@ -1,14 +1,12 @@
-import React from "react";
 import { TextField } from "@mui/material";
 import { Controller, useFormContext } from "react-hook-form";
 
 interface RHFTextFieldProps {
   name: string;
-  setError: (error: boolean) => void;
 }
 
-export default function RHFTextField({ name, setError }: RHFTextFieldProps) {
-  const { control, trigger } = useFormContext();
+export default function RHFTextField({ name }: RHFTextFieldProps) {
+  const { control } = useFormContext();
 
   return (
     <Controller
@@ -24,8 +22,6 @@ export default function RHFTextField({ name, setError }: RHFTextFieldProps) {
           margin="normal"
           onChange={async (event) => {
             field.onChange(event);
-            await trigger(name);
-            setError(!!fieldState.error);
           }}
         />
       )}

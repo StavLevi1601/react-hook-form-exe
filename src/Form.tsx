@@ -1,14 +1,16 @@
 import { Stack } from "@mui/material";
+import type { UseFormReturn } from "react-hook-form";
 import RHFTextField from "./RHFTextField";
+import type { Schema } from "./validations";
 
 interface FormProps {
-  handleSetError: (error: boolean) => void;
+	methods: UseFormReturn<Schema>;
 }
 
-export default function Form({ handleSetError }: FormProps) {
-  return (
-    <Stack>
-      <RHFTextField name="email" setError={handleSetError} />
-    </Stack>
-  );
+export default function Form({ methods }: FormProps) {
+	return (
+		<Stack>
+			<RHFTextField name="email" />
+		</Stack>
+	);
 }
