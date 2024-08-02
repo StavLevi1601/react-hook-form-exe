@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Dialog,
   DialogTitle,
@@ -24,9 +24,16 @@ export default function FormDialog({
   error,
   ...rest
 }: FormDialogProps) {
+  const [diables, setDisables] = useState(false);
+
   const handleCancel = () => {
     methods.reset();
     onClose();
+    setDisables(false);
+  };
+
+  const handleDisable = (isSubmitting: boolean, error: boolean) => {
+    return isSubmitting || error || diables;
   };
 
   return (
@@ -38,9 +45,7 @@ export default function FormDialog({
           <DialogActions>
             <Button
               type="submit"
-              variant="contained"
-              color="primary"
-              disabled={methods.formState.isSubmitting || error}
+              disabled={handleDisable(methods.formState.isSubmitting, error)}
             >
               Submit
             </Button>
