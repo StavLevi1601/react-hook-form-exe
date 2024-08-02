@@ -49,9 +49,7 @@ export default function FormDialog({
             >
               Submit
             </Button>
-            <Button onClick={handleCancel} color="primary">
-              Cancel
-            </Button>
+            <Button onClick={handleCancel}>Cancel</Button>
           </DialogActions>
         </form>
       </DialogContent>
