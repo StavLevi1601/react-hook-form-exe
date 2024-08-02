@@ -15,13 +15,11 @@ export default function App() {
 
 	const {
 		handleSubmit,
-		watch,
+		// watch,
 		formState: { errors },
 	} = methods;
-	console.log("errors: ", errors);
 
-	const values = watch();
-	console.log("values: ", values);
+	// const values = watch();
 
 	const handleClickOpen = () => {
 		setOpen(true);
@@ -50,7 +48,7 @@ export default function App() {
 						onSubmit={onSubmit}
 						disabled={disabled}
 					>
-						<Form methods={methods} />
+						<Form />
 					</FormDialog>
 				</form>
 			</FormProvider>
