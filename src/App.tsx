@@ -11,15 +11,13 @@ export default function App() {
 
 	const methods = useForm<Schema>({
 		resolver: zodResolver(schema),
+		mode: "all",
 	});
 
 	const {
 		handleSubmit,
-		// watch,
 		formState: { errors },
 	} = methods;
-
-	// const values = watch();
 
 	const handleClickOpen = () => {
 		setOpen(true);
