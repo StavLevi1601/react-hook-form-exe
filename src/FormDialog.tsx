@@ -12,7 +12,7 @@ import { UseFormReturn } from "react-hook-form";
 interface FormDialogProps extends DialogProps {
   onClose: () => void;
   methods: UseFormReturn;
-  onSubmit: React.FormEventHandler<HTMLDivElement>;
+  onSubmit: React.FormEventHandler<HTMLFormElement>;
   error: boolean;
 }
 

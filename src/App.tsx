@@ -27,8 +27,7 @@ export default function App() {
     methods.reset();
   };
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = () => {
     handleClose();
   };
 
