@@ -37,6 +37,8 @@ export default function App() {
 		handleClose();
 	});
 
+	const disabled = Object.keys(errors).length > 0;
+
 	return (
 		<>
 			<Button onClick={handleClickOpen}>Open Dialog</Button>
@@ -46,7 +48,7 @@ export default function App() {
 						open={open}
 						onClose={handleClose}
 						onSubmit={onSubmit}
-						disabled={false}
+						disabled={disabled}
 					>
 						<Form methods={methods} />
 					</FormDialog>
