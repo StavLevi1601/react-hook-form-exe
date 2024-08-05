@@ -1,14 +1,10 @@
 import { Stack } from "@mui/material";
 import RHFTextField from "./RHFTextField";
 
-interface FormProps {
-  handleSetError: (error: boolean) => void;
-}
-
-export default function Form({ handleSetError }: FormProps) {
-  return (
-    <Stack>
-      <RHFTextField name="email" setError={handleSetError} />
-    </Stack>
-  );
+export default function Form() {
+	return (
+		<Stack>
+			<RHFTextField name="email" />
+		</Stack>
+	);
 }
